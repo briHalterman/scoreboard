@@ -33,6 +33,11 @@ const App = () => {
     );
   };
 
+  const handleScoreChange = (delta) => {
+    // setScore(score + 1);
+    console.log(delta);
+  };
+
   return (
     <div className="scoreboard">
       <Header title="Scoreboard" totalPlayers={players.length} />
@@ -45,6 +50,7 @@ const App = () => {
           id={player.id}
           key={player.id.toString()}
           removePlayer={handleRemovePlayer}
+          changeScore={handleScoreChange}
         />
       ))}
     </div>

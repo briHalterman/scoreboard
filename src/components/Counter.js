@@ -13,7 +13,7 @@ const Counter = (props) => {
     <div className="counter">
       <button
         className="counter-action decrement"
-        // onClick={() => decrementScore()}
+        onClick={() => props.changeScore(-1)}
       >
         {' '}
         -{' '}
@@ -21,7 +21,7 @@ const Counter = (props) => {
       <span className="counter-score">{props.score}</span>
       <button
         className="counter-action increment"
-        // onClick={() => incrementScore()}
+        onClick={() => props.changeScore(1)}
       >
         {' '}
         +{' '}
