@@ -5,7 +5,7 @@ const Stopwatch = () => {
   const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
-    console.log('Running side effect');
+    // console.log('Running side effect');
     let id;
     if (isRunning) {
       id = setInterval(() => {
@@ -15,7 +15,7 @@ const Stopwatch = () => {
     }
     return () => {
       clearInterval(id);
-      console.log('Clean up');
+      // console.log('Clean up');
     };
   }, [isRunning]);
 
