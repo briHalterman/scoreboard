@@ -11,7 +11,6 @@ const AddPlayerForm = (props) => {
 
   return (
     <form onSubmit={(event) => handleSubmit(event)}>
-      {console.log(value)};
       <input
         type="text"
         value={value}
