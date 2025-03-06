@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
 import Counter from './Counter';
+import PropTypes from 'prop-types';
 
-const Player = ({ removePlayer, id, name, score, changeScore }) => {
+const Player = ({ name, score, id, removePlayer, changeScore }) => {
   return (
     <div className="player">
       {console.log(name + ' rendered')}
@@ -18,6 +19,14 @@ const Player = ({ removePlayer, id, name, score, changeScore }) => {
       <Counter score={score} id={id} changeScore={changeScore} />
     </div>
   );
+};
+
+Player.propTypes = {
+  name: PropTypes.string,
+  score: PropTypes.number,
+  id: PropTypes.number,
+  removePlayer: PropTypes.func,
+  changeScore: PropTypes.func,
 };
 
 const playerPropsAreEqual = (prevProps, nextProps) => {

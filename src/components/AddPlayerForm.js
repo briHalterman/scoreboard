@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 
 const AddPlayerForm = ({ addPlayer }) => {
   const playerInput = useRef();
@@ -20,6 +21,10 @@ const AddPlayerForm = ({ addPlayer }) => {
       <input type="submit" value="Add player" />
     </form>
   );
+};
+
+AddPlayerForm.propTypes = {
+  addPlayer: PropTypes.func,
 };
 
 export default AddPlayerForm;
