@@ -65,7 +65,7 @@ const App = () => {
 
   return (
     <div className="scoreboard">
-      <Header title="Scoreboard" players={players} />
+      <Header players={players} />
 
       {/* Players list */}
       {players.map((player) => (

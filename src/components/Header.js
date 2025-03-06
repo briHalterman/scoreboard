@@ -15,7 +15,11 @@ const Header = ({ players, title }) => {
 
 Header.propTypes = {
   title: PropTypes.string,
-  players: PropTypes.arrayOf(PropTypes.object),
+  players: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+Header.defaultProps = {
+  title: 'Scoreboard',
 };
 
 export default Header;

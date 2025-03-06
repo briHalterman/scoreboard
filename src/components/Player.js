@@ -22,11 +22,11 @@ const Player = ({ name, score, id, removePlayer, changeScore }) => {
 };
 
 Player.propTypes = {
-  name: PropTypes.string,
-  score: PropTypes.number,
-  id: PropTypes.number,
-  removePlayer: PropTypes.func,
-  changeScore: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
+  removePlayer: PropTypes.func.isRequired,
+  changeScore: PropTypes.func.isRequired,
 };
 
 const playerPropsAreEqual = (prevProps, nextProps) => {
