@@ -1,42 +1,39 @@
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import Counter from './Counter';
 import PropTypes from 'prop-types';
 import Icon from './Icon';
+import { ScoreboardContext } from './Context';
 
-const Player = ({
-  name,
-  score,
-  id,
-  removePlayer,
-  changeScore,
-  isHighScore,
-}) => {
+const Player = ({ index }) => {
+  const { players, actions } = useContext(ScoreboardContext);
+
+  const highScore = Math.max(
+    ...players.map((player) => player.score),
+    0
+  );
+  const isHighScore =
+    players[index].score === highScore && highScore !== 0;
+
   return (
     <div className="player">
-      {console.log(name + ' rendered')}
       <span className="player-name">
         <button
           className="remove-player"
-          onClick={() => removePlayer(id)}
+          onClick={() => actions.removePlayer(players[index].id)}
         >
           ✖
         </button>
         <Icon isHighScore={isHighScore} />
-        {name}
+        {players[index].name}
       </span>
 
-      <Counter score={score} id={id} changeScore={changeScore} />
+      <Counter index={index} />
     </div>
   );
 };
 
 Player.propTypes = {
-  name: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
-  removePlayer: PropTypes.func.isRequired,
-  changeScore: PropTypes.func.isRequired,
-  isHighScore: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 const playerPropsAreEqual = (prevProps, nextProps) => {
