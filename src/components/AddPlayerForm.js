@@ -1,12 +1,13 @@
-import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { useRef, useContext } from 'react';
+import { ScoreboardContext } from './Context';
 
-const AddPlayerForm = ({ addPlayer }) => {
+const AddPlayerForm = () => {
   const playerInput = useRef();
+  const { actions } = useContext(ScoreboardContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addPlayer(playerInput.current.value);
+    actions.addPlayer(playerInput.current.value);
     event.currentTarget.reset();
   };
 
@@ -21,10 +22,6 @@ const AddPlayerForm = ({ addPlayer }) => {
       <input type="submit" value="Add player" />
     </form>
   );
-};
-
-AddPlayerForm.propTypes = {
-  addPlayer: PropTypes.func.isRequired,
 };
 
 export default AddPlayerForm;
