@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { ScoreboardContext } from './Context';
 
-const Counter = ({ score, id, changeScore }) => {
+const Counter = ({ index }) => {
+  const { players, actions } = useContext(ScoreboardContext);
+
   return (
     <div className="counter">
       <button
         className="counter-action decrement"
-        onClick={() => changeScore(id, -1)}
+        onClick={() => actions.changeScore(players[index].id, -1)}
       >
         {' '}
         -{' '}
       </button>
-      <span className="counter-score">{score}</span>
+      <span className="counter-score">{players[index].score}</span>
       <button
         className="counter-action increment"
-        onClick={() => changeScore(id, 1)}
+        onClick={() => actions.changeScore(players[index].id, 1)}
       >
         {' '}
         +{' '}
@@ -24,9 +27,7 @@ const Counter = ({ score, id, changeScore }) => {
 };
 
 Counter.propTypes = {
-  id: PropTypes.number.isRequired,
-  score: PropTypes.number.isRequired,
-  changeScore: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Counter;
